@@ -1,18 +1,34 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import { useState } from 'react'; 
+import { useState, useEffect } from 'react';
+import { API } from '../api'; 
 
 export  function InputField() {
     const [grams,setGrams] = useState("")
     const [total,setTotal] = useState('...');
+    const [todayPrice, setTodayPrice] = useState('');
+
+    const getDate = () => {
+      
+        fetch(`${API}/Gold/get/today`, {
+          method: "GET"
+        })
+        .then((data) => data.json())
+        .then((data)=> setTodayPrice(data.price))
+    };
+  
+  
+    useEffect(() => getDate(), []);
 
     const handleTotal = ()=>{
-        
-        const price = 162904.30;
+
+      
+        const price = (+todayPrice).toFixed(2);
+        // console.log(price);
         const goldTotal = ((price /31)*grams).toLocaleString('en-US');
         setTotal(`₹${goldTotal}`);
     }
-
+    
 
   return (
     <div>

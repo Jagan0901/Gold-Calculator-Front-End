@@ -21,7 +21,7 @@ function App() {
       .then((response) => response.json())
       .then((data) => {
         if (data.success === true) {
-          setGoldData(data);
+          return setGoldData(data);
         }
       });
   };
@@ -41,8 +41,10 @@ function App() {
     }
   };
 
+  postGoldData()
+
   useEffect(() => getGoldPrice(), []);
-  useEffect(() => postGoldData(), []);
+  // useEffect(() => postGoldData(), []);
 
   return (
     <div className="App">

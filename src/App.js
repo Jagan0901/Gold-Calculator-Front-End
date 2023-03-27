@@ -44,11 +44,11 @@ function App() {
   postGoldData()
 
   useEffect(() => getGoldPrice(), []);
-  // useEffect(() => postGoldData(), []);
+
 
   return (
     <div className="App">
-      <NavBar goldData={goldData} />
+      <NavBar/>
       <h1>Gold Calculator</h1>
       <InputField />
     </div>

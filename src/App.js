@@ -5,9 +5,9 @@ import { useEffect, useState } from "react";
 import { API } from "./api";
 import { InputField } from "./Components/InputField";
 
-const API_KEY = "31ps09wcojiett784rccja9cunqsg8qthxdewa5v74thr1p61lirmstev9lh";
-const API_KEY1 = "0mgdrfjgfp9vxlgvzabek0l0xy16uv6d2umx6he7oz419u522d32h12oa9hk";
-const API_KEY2 = "nefnopne08vnns2ks1soj86l4h7hi5x38329oudn4d4nrz0i3hvtve02hw6x";
+const API_KEY = "31ps09wcojiett784rccja9cunqsg8qthxdewa5v74thr1p61lirmstev9lh"; //upto 50 requests per month
+const API_KEY1 = "0mgdrfjgfp9vxlgvzabek0l0xy16uv6d2umx6he7oz419u522d32h12oa9hk";//upto 50 requests per month
+const API_KEY2 = "nefnopne08vnns2ks1soj86l4h7hi5x38329oudn4d4nrz0i3hvtve02hw6x";//upto 50 requests per month
 
 function App() {
   const [goldData, setGoldData] = useState({});

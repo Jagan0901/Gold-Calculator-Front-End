@@ -8,7 +8,8 @@ export  function InputField() {
     const [total,setTotal] = useState('...');
     const [todayPrice, setTodayPrice] = useState('');
 
-    const getDate = () => {
+    //Getting today gold price from Database
+    const getPrice = () => {
       
         fetch(`${API}/Gold/get/today`, {
           method: "GET"
@@ -18,7 +19,7 @@ export  function InputField() {
     };
   
   
-    useEffect(() => getDate(), []);
+    useEffect(() => getPrice(), []);
 
     const handleTotal = ()=>{
 

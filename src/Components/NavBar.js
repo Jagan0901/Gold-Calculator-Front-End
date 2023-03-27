@@ -16,8 +16,8 @@ export function NavBar() {
 
   const [todayPrice, setTodayPrice] = useState('');
 
-
-    const getDate = () => {
+    //Getting today gold price from Database
+    const getPrice = () => {
       
       fetch(`${API}/Gold/get/today`, {
         method: "GET"
@@ -27,7 +27,7 @@ export function NavBar() {
   };
 
 
-  useEffect(() => getDate(), []);  
+  useEffect(() => getPrice(), []);  
 
     
 

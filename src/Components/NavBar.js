@@ -20,7 +20,8 @@ export function NavBar() {
     const getPrice = () => {
       
       fetch(`${API}/Gold/get/today`, {
-        method: "GET"
+        method: "GET",
+        headers: {"x-auth-token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjFjNjBkM2RkN2Q3NWI1NTU4ZmZlZSIsImlhdCI6MTY3OTkzNjIxNX0.DmH3UmlTN8sdie9eP_HUQ_sDA2KgkMLXy9egMFMkGFo"}
       })
       .then((data) => data.json())
       .then((data)=> setTodayPrice(data.price))

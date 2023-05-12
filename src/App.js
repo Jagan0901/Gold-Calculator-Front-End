@@ -4,6 +4,7 @@ import { NavBar } from "./Components/NavBar";
 import { useEffect, useState } from "react";
 import { API } from "./api";
 import { InputField } from "./Components/InputField";
+import { LineChart } from './Components/LineChart';
 
 // const API_KEY = "31ps09wcojiett784rccja9cunqsg8qthxdewa5v74thr1p61lirmstev9lh"; //upto 50 requests per month
 // const API_KEY1 = "0mgdrfjgfp9vxlgvzabek0l0xy16uv6d2umx6he7oz419u522d32h12oa9hk";//upto 50 requests per month
@@ -51,11 +52,16 @@ function App() {
 
 
   return (
+    goldData ?
     <div className="App">
-       <NavBar/> 
+       <NavBar data={goldData}/> 
        <h1>Gold Calculator</h1> 
-       <InputField /> 
+       <InputField data={goldData}/>
+       <div className="chart">
+        <LineChart refresh={goldData}/>
+       </div> 
     </div>
+    : 'Loading...'
   );
 }
 

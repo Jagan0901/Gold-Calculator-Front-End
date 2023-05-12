@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
 import { API } from '../api'; 
 
-export  function InputField() {
+export  function InputField({data}) {
     const [grams,setGrams] = useState("")
     const [total,setTotal] = useState('...');
     const [todayPrice, setTodayPrice] = useState('');
@@ -33,6 +33,7 @@ export  function InputField() {
     
 
   return (
+    data ?
     <div>
         <Form className='form'>
       <Form.Group className="mb-3" >
@@ -48,5 +49,6 @@ export  function InputField() {
       </Button>
     </Form>
     </div>
+    : 'Loading...'
   )
 }

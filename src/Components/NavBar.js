@@ -12,7 +12,7 @@ import { API } from '../api';
 //   }
 //   }
 
-export function NavBar() {
+export function NavBar({data}) {
 
   const [todayPrice, setTodayPrice] = useState('');
 
@@ -33,6 +33,7 @@ export function NavBar() {
     
 
   return (
+     data ?
     <div className='navbar-container'>
         <Navbar className='navbar'>
         <Container >
@@ -45,5 +46,7 @@ export function NavBar() {
         <h2><span className='caption'><i className="fa-solid fa-wifi"></i>Today Gold Price </span>
          - INR  <span className='amount'>{todayPrice.toLocaleString('en-US')} (ozt)</span></h2>
     </div>
+    : "Loading"
+ 
   )
 }

@@ -6,12 +6,28 @@ import { API } from "./api";
 import { InputField } from "./Components/InputField";
 import { LineChart } from './Components/LineChart';
 
-// const API_KEY = "31ps09wcojiett784rccja9cunqsg8qthxdewa5v74thr1p61lirmstev9lh"; //upto 50 requests per month
-// const API_KEY1 = "0mgdrfjgfp9vxlgvzabek0l0xy16uv6d2umx6he7oz419u522d32h12oa9hk";//upto 50 requests per month
-// const API_KEY2 = "nefnopne08vnns2ks1soj86l4h7hi5x38329oudn4d4nrz0i3hvtve02hw6x";//upto 50 requests per month
-// const API_KEY3 = "bx6jdfcgc1ubckba1bvskz988d369sj388hc9yb7s0br3n788x7m1sm4u60d";//upto 50 requests per month
-// const API_KEY4 = "ok30wg8a7t93tas7i3252b2308xwxjl6an091kbfhe7v2t8mj8sf7xughbzj";//upto 50 requests per month
 
+function descending(a,b){
+  if(a.date<b.date){
+      return 1;
+  }else if(a.date>b.date){
+      return -1;
+  }else{
+      return 0;
+  }
+}
+
+function ascending(a,b){
+  if(a.date<b.date){
+      return -1;
+  }else if(a.date>b.date){
+      return 1;
+  }else{
+      return 0;
+  }
+}
+const API_KEY1 = "goldapi-1lh6prlhizyzn5-io";
+const API_KEY2 = "goldapi-4j3z0rlhrd1754-io";
 
 function App() {
   const [goldData, setGoldData] = useState(null);
@@ -19,10 +35,9 @@ function App() {
   //To Get gold price data from Public API
   const getGoldPrice = () => {
     const URL = "https://www.goldapi.io/api/XAU/INR";
-    // const url = `https://metals-api.com/api/latest?access_key=${API_KEY2}&base=INR&symbols=XAU`
     fetch(URL,
       { method  : "GET",
-        headers : {"x-access-token": "goldapi-1lh6prlhizyzn5-io", "Content-Type" : "application/json"} 
+        headers : {"x-access-token": "goldapi-4j3z0rlhrd1754-io", "Content-Type" : "application/json"} 
       }
     )
       .then((response) => response.json())
@@ -51,14 +66,46 @@ function App() {
   useEffect(() => getGoldPrice(), []);
 
 
+
+
+
+  //Line Chart Part
+  const [allData, setAllData] = useState([]);
+  const getAllData = () => {
+    fetch(`${API}/Gold/get`, {
+      method: "GET",
+      headers: {
+        "x-auth-token":
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MjFjNjBkM2RkN2Q3NWI1NTU4ZmZlZSIsImlhdCI6MTY3OTkzNjIxNX0.DmH3UmlTN8sdie9eP_HUQ_sDA2KgkMLXy9egMFMkGFo",
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setAllData(data));
+  };
+  useEffect(() => getAllData(), []);
+ 
+  const des = allData.sort((a, b) => descending(a, b));
+  let emptyArr = [];
+  des.forEach((item, i) => {
+    if (i <= 6) {
+      emptyArr.push(item);
+    }
+  });
+  const result = emptyArr.sort((a, b) => ascending(a, b));
+
+
+
+
+
   return (
-    goldData ?
+    goldData && allData.length>1?
     <div className="App">
-       <NavBar data={goldData}/> 
+       <NavBar data={goldData}/>
+       <p className="alert">Please refresh to get accurate value ! ! !</p> 
        <h1>Gold Calculator</h1> 
        <InputField data={goldData}/>
        <div className="chart">
-        <LineChart refresh={goldData}/>
+        <LineChart result={result} refresh={goldData}/>
        </div> 
     </div>
     : 'Loading...'

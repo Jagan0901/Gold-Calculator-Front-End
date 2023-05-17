@@ -1,18 +1,21 @@
 .App {
-  /* text-align: center; */
-  /* font-family: 'Nunito', sans-serif; */
-  font-family: 'Quattrocento Sans', sans-serif;
-  /* background: ; */
-  
+  font-family: 'Quattrocento Sans', sans-serif; 
 }
 
 .App h1{
     color: #D9B04C;
     font-family: 'Quattrocento Sans', sans-serif;
     font-size: 2.5em;
-    /* margin: 0.67em 0; */
     line-height: 1.4;
     padding: 40px;
+}
+.App .alert{
+  color: darkgreen;
+  line-height: 1.4;
+  /* font-family: 'Quattrocento Sans', sans-serif; */
+  font-weight: bolder;
+  /* font-size: 1.1rem; */
+  padding: 0% 40% 0% 40%;
 }
 
 /* Navbar Section starts */
@@ -95,7 +98,6 @@
 
 .form h2{
   color: #343131;
-  /* font-size: 1rem; */
   font-family: 'Nunito', sans-serif;
   font-weight: bolder;
 }
@@ -107,7 +109,5 @@
 
 
 .chart{
-  width:70%;
-  padding-top: 5%;
-  padding-left: 2%;
+  width:50%;
 }

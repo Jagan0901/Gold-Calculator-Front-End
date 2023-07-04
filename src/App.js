@@ -47,7 +47,7 @@ function App() {
     }
     fetchData() //Initial API call when the component mount
 
-    const interval = setInterval(fetchData, 1 * 60 * 60 * 1000);
+    const interval = setInterval(fetchData, 18 * 60 * 60 * 1000);
 
     return ()=> clearInterval(interval);
   };

@@ -111,3 +111,26 @@
 .chart{
   width:50%;
 }
+
+.login-title{
+  text-align: center;
+  margin: 5% 0 2% 0;
+  padding-bottom: 0%;
+}
+
+.login{
+  margin: 0% 10% 10% 10%;
+  padding: 2%;
+  background-color: rgb(255, 255, 255);
+  border: .01px solid;
+}
+
+.login-btn{
+  margin: 1% 45% 0% 45%;
+}
+
+.navigate-to-signup{
+  display: flex;
+  justify-content: center;
+  margin: 5px 0 0 0;
+}

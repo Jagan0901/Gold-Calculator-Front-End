@@ -26,8 +26,8 @@ function ascending(a, b) {
   }
 }
 
-const API_KEY1 = "goldapi-1lh6prlhizyzn5-io";
-const API_KEY2 = "goldapi-4j3z0rlhrd1754-io";
+// const API_KEY1 = "goldapi-1lh6prlhizyzn5-io";
+// const API_KEY2 = "goldapi-4j3z0rlhrd1754-io";
 
 export const Home = () => {
      const [goldData, setGoldData] = useState(null);
@@ -109,7 +109,7 @@ export const Home = () => {
   return goldData && allData.length > 1 ? (
     <div className="App">
       <NavBar data={goldData} />
-      <p className="alert">Please refresh to get accurate value ! ! !</p>
+      {/* <p className="alert">Please refresh to get accurate value ! ! !</p> */}
       <h1>Gold Calculator</h1>
       <InputField data={goldData} />
       <div className="chart">

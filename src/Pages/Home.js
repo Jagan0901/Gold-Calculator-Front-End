@@ -34,7 +34,6 @@ export const Home = () => {
 
      //To Get gold price data from Public API
      const getGoldPrice = () => {
-       const fetchData = () => {
          const URL = "https://www.goldapi.io/api/XAU/INR";
          fetch(URL, {
            method: "GET",
@@ -46,12 +45,6 @@ export const Home = () => {
            .then((response) => response.json())
            .then((data) => setGoldData(data))
            .catch((error) => console.log("error:", error));
-       };
-       fetchData(); //Initial API call when the component mount
-
-       const interval = setInterval(fetchData, 12 * 60 * 60 * 1000);
-
-       return () => clearInterval(interval);
      };
 
      //Inserting gold price data in Database

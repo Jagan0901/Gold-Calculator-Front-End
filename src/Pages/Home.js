@@ -81,6 +81,8 @@ export const Home = () => {
      //Line Chart Part
      const [allData, setAllData] = useState([]);
      const getAllData = () => {
+
+      const gettingData = ()=>{
        fetch(`${API}/Gold/get`, {
          method: "GET",
          headers: {
@@ -90,6 +92,8 @@ export const Home = () => {
        })
          .then((response) => response.json())
          .then((data) => setAllData(data));
+      }
+      setTimeout(gettingData,5000);
      };
      useEffect(() => getAllData(), []);
 

@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
 import { useState,useEffect } from 'react';
 import { API } from '../api';
+import { Loading } from './Loading';
 
 // function getPrice(){
   
@@ -46,7 +47,7 @@ export function NavBar({data}) {
         <h2><span className='caption'><i className="fa-solid fa-wifi"></i>Today Gold Price </span>
          - INR  <span className='amount'>{todayPrice.toLocaleString('en-US')} (ozt)</span></h2>
     </div>
-    : "Loading"
+    : <Loading/>
  
   )
 }

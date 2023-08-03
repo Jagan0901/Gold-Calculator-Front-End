@@ -1,6 +1,7 @@
 import { Line } from "react-chartjs-2";
 import { Chart as ChartJS } from "chart.js/auto";
 import { useState } from "react";
+import { Loading } from "./Loading";
 
 
 
@@ -24,5 +25,5 @@ const [chartData, setChartData] = useState({
   });
   
 
-  return refresh ? <Line data={chartData}/> : 'Loading...' ;
+  return refresh ? <Line data={chartData}/> : <Loading/> ;
 }

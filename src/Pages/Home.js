@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { API } from "../api";
 import { InputField } from "../Components/InputField";
 import { LineChart } from "../Components/LineChart";
+import { Loading } from "../Components/Loading";
 
 function descending(a, b) {
   if (a.date < b.date) {
@@ -114,6 +115,6 @@ export const Home = () => {
       </div>
     </div>
   ) : (
-    "Loading..."
+    <Loading/>
   );
 };

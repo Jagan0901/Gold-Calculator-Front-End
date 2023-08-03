@@ -56,7 +56,7 @@ export const Login = () => {
             onChange={(e) => setEmail(e.target.value)}
           />
           <Form.Text className="text-muted">
-            Example for Email Pattern: cool@mail.com
+            User Email Credential: cool@mail.com
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3" controlId="formPlaintextPassword">
@@ -69,7 +69,7 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <Form.Text className="text-muted">
-            Example for Password Pattern: Password@123
+            User Password Credential: Password@123
           </Form.Text>
         </Form.Group>
         <Button variant="success" className="login-btn" onClick={getUser}>

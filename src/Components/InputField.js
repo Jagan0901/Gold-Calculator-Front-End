@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useState, useEffect } from 'react';
 import { API } from '../api'; 
+import { Loading } from './Loading';
 
 export  function InputField({data}) {
     const [grams,setGrams] = useState("")
@@ -49,6 +50,6 @@ export  function InputField({data}) {
       </Button>
     </Form>
     </div>
-    : 'Loading...'
+    : <Loading/>
   )
 }

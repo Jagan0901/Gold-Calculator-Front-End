@@ -31,25 +31,37 @@ export  function InputField({data}) {
         const goldTotal = ((price /31)*grams).toLocaleString('en-US');
         setTotal(`₹${goldTotal}`);
     }
+
+    const handleKeyDown = (event)=>{
+      if(event.key === "Enter"){
+        handleTotal();
+      }
+    }
     
 
-  return (
-    data ?
+  return data ? (
     <div>
-        <Form className='form'>
-      <Form.Group className="mb-3" >
-        <Form.Label className='label'>Enter the Weight</Form.Label>
-        <Form.Control className='value' type = 'number' onChange={((event)=> setGrams(event.target.value))} placeholder="in grams" />
-      </Form.Group>
-      <Form.Group className="mb-3" >
-        <Form.Label className='label'>Approximate Price (in INR)</Form.Label>
-        <h2>{total}</h2>
-      </Form.Group>
-      <Button variant='warning' className='button' onClick={handleTotal} >
-        Calculate
-      </Button>
-    </Form>
+      <Form className="form">
+        <Form.Group className="mb-3">
+          <Form.Label className="label">Enter the Weight</Form.Label>
+          <Form.Control
+            className="value"
+            type="number"
+            onChange={(event) => setGrams(event.target.value)}
+            placeholder="in grams"
+            onKeyDown={handleKeyDown}
+          />
+        </Form.Group>
+        <Form.Group className="mb-3">
+          <Form.Label className="label">Approximate Price (in INR)</Form.Label>
+          <h2>{total}</h2>
+        </Form.Group>
+        <Button variant="warning" className="button" onClick={handleTotal}>
+          Calculate
+        </Button>
+      </Form>
     </div>
-    : <Loading/>
-  )
+  ) : (
+    <Loading />
+  );
 }

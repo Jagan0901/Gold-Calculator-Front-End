@@ -32,6 +32,11 @@ export const Login = () => {
                 setStatus(res.error)
             }
           })
+    };
+
+    const getUserCredential = ()=>{
+      setEmail("cool@mail.com");
+      setPassword("Password@123");
     }
 
     const navigate = useNavigate();
@@ -53,6 +58,7 @@ export const Login = () => {
           <Form.Control
             type="email"
             placeholder="Enter Email"
+            value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <Form.Text className="text-muted">
@@ -66,6 +72,7 @@ export const Login = () => {
           <Form.Control
             type="password"
             placeholder="Enter Password"
+            value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
           <Form.Text className="text-muted">
@@ -74,6 +81,9 @@ export const Login = () => {
         </Form.Group>
         <Button variant="success" className="login-btn" onClick={getUser}>
           Submit
+        </Button>
+        <Button variant="secondary" className="login-btn" onClick={getUserCredential}>
+          To Get User Credential
         </Button>
         <h5 className="navigate-to-signup">
           Don't have an account? Create an account-

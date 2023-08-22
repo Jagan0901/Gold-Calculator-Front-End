@@ -1,5 +1,6 @@
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API } from './../api';
@@ -8,11 +9,14 @@ import { API } from './../api';
 export const SignUp = () => {
     const [createEmail, setCreateEmail] = useState("");
     const [createPassword, setCreatePassword] = useState("");
+    const [loading, setLoading] = useState(false);
     const [status, setStatus] = useState("");
     // console.log(createEmail,createPassword)
     const navigate = useNavigate();
 
     const postUsers = ()=>{
+      if (!createEmail || !createPassword) return setStatus("Please fill out the fields");
+      setLoading(true);
         const newUser = {
             email:createEmail,
             password:createPassword
@@ -29,9 +33,11 @@ export const SignUp = () => {
          .then((res)=> {
             if(res.message){
                 setStatus(res.message);
-                navigate('/')
+                navigate('/');
+                setLoading(false);
             }else if(res.error){
-                setStatus(res.error)
+                setStatus(res.error);
+                setLoading(false);
             }
          })
     }
@@ -68,7 +74,17 @@ export const SignUp = () => {
           />
         </Form.Group>
         <Button variant="primary" className="login-btn" onClick={postUsers}>
-          Sign Up
+          {loading ? (
+            <Spinner
+              as="span"
+              animation="border"
+              size="sm"
+              role="status"
+              aria-hidden="true"
+            />
+          ) : (
+            "Sign Up"
+          )}
         </Button>
         <p style={statusStyles}>{status}</p>
       </Form>

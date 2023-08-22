@@ -1,5 +1,6 @@
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
+import Spinner from "react-bootstrap/Spinner";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { API } from "../api";
@@ -7,10 +8,13 @@ import { API } from "../api";
 export const Login = () => {
     const [email,setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [loading,setLoading] = useState(false);
     const [status,setStatus] = useState("");
     // console.log(`Email-${email}, Password-${password}`)
 
     const getUser = ()=>{
+      if(!email || !password) return setStatus("Please fill out the fields");
+      setLoading(true);
         const user ={
             email : email,
             password: password
@@ -27,9 +31,11 @@ export const Login = () => {
           .then((res)=>{
             if(res.message){
                 setStatus(res.message);
-                navigate("/home")
+                navigate("/home");
+                setLoading(false);
             }else if(res.error){
-                setStatus(res.error)
+                setStatus(res.error);
+                setLoading(false);
             }
           })
     };
@@ -80,7 +86,13 @@ export const Login = () => {
           </Form.Text>
         </Form.Group>
         <Button variant="success" className="login-btn" onClick={getUser}>
-          Submit
+          {loading ? <Spinner
+          as="span"
+          animation="border"
+          size="sm"
+          role="status"
+          aria-hidden="true"
+        />:"Submit"}
         </Button>
         <Button variant="secondary" className="login-btn" onClick={getUserCredential}>
           To Get User Credential

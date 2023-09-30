@@ -35,13 +35,14 @@ export  function InputField({data}) {
     const handleKeyDown = (event)=>{
       if(event.key === "Enter"){
         handleTotal();
+        event.preventDefault();
       }
     }
     
 
   return data ? (
     <div>
-      <Form className="form">
+      <Form className="form" onKeyDown={handleKeyDown}>
         <Form.Group className="mb-3">
           <Form.Label className="label">Enter the Weight</Form.Label>
           <Form.Control
@@ -49,7 +50,6 @@ export  function InputField({data}) {
             type="number"
             onChange={(event) => setGrams(event.target.value)}
             placeholder="in grams"
-            onKeyDown={handleKeyDown}
           />
         </Form.Group>
         <Form.Group className="mb-3">

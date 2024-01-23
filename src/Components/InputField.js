@@ -8,6 +8,7 @@ export  function InputField({data}) {
     const [grams,setGrams] = useState("")
     const [total,setTotal] = useState('...');
     const [todayPrice, setTodayPrice] = useState('');
+    const [status, setStatus] = useState("");
 
     //Getting today gold price from Database
     const getPrice = () => {
@@ -24,6 +25,13 @@ export  function InputField({data}) {
     useEffect(() => getPrice(), []);
 
     const handleTotal = ()=>{
+
+       if(grams<0) {
+        setTotal("...");
+        setStatus("Please Enter Valid gram");
+        return;
+       }
+        setStatus("");
 
       
         const price = (+todayPrice).toFixed(2);
@@ -59,6 +67,7 @@ export  function InputField({data}) {
         <Button variant="warning" className="button" onClick={handleTotal}>
           Calculate
         </Button>
+        <p style={{color:"red", fontWeight:"bolder", textAlign:"center"}}>{status}</p>
       </Form>
     </div>
   ) : (

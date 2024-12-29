@@ -85,23 +85,29 @@ export const Login = () => {
             User Password Credential: Password@123
           </Form.Text>
         </Form.Group>
-        <Button variant="success" className="login-btn" onClick={getUser}>
-          {loading ? <Spinner
-          as="span"
-          animation="border"
-          size="sm"
-          role="status"
-          aria-hidden="true"
-        />:"Submit"}
-        </Button>
-        <Button variant="secondary" className="login-btn" onClick={getUserCredential}>
-          To Get User Credential
-        </Button>
+        <div className="login-btn">
+          <Button variant="success" className="btn" onClick={getUser}>
+            {loading ? (
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+            ) : (
+              "Submit"
+            )}
+          </Button>
+          <Button variant="secondary" className="btn" onClick={getUserCredential}>
+            User Credential
+          </Button>
+        </div>
         <h5 className="navigate-to-signup">
           Don't have an account? Create an account-
           <button
             variant="text"
-            style={{ border: "none", textDecoration: "none" }}
+            style={{ border: "none", textDecoration: "none"}}
             onClick={() => navigate("/signup")}
           >
             Click here
